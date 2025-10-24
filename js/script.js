@@ -24,12 +24,13 @@ const CONFIG = {
     // Update these values as needed
     estoque: {
         "Conta com Assinatura Plus por 7 dias + 5 MIL CRÉDITOS - R$15,00": 100,
-        "Conta com 1800 créditos - R$2,00": 99,
-        "Pacote 3 - 2.500 CRÉDITOS - R$5,99": 99,
-        "Pacote 4 - 5.000 CRÉDITOS + 1k BÔNUS - R$10,00": 49,
-        "Pacote 5 - 10.000 CRÉDITOS + 2k BÔNUS - R$20,00": 57,
-        "Pacote 6 - 20.000 CRÉDITOS + 3k BÔNUS - R$34,99": 95,
-        "Pacote 7 - 30.000 CRÉDITOS + 4k BÔNUS - R$49,99": 96
+        "Recarga - 2.500 CRÉDITOS - R$5,99": 99,
+        "Recarga - 5.000 CRÉDITOS - R$10,00": 49,
+        "Recarga - 10.000 CRÉDITOS + 1k BÔNUS - R$20,00": 57,
+        "Recarga - 20.000 CRÉDITOS + 2k BÔNUS - R$34,99": 95,
+        "Recarga - 30.000 CRÉDITOS + 3k BÔNUS - R$49,99": 96,
+        "Recarga - 40.000 CRÉDITOS + 4k BÔNUS - R$64,99": 96,
+        "Recarga - 50.000 CRÉDITOS + 5k BÔNUS - R$79,99": 96
     }
 };
 
@@ -484,7 +485,89 @@ window.addEventListener("load", () => {
 });
 
 // ============================================
-// 19. EXPORT FUNCTIONS FOR TESTING
+// 19. SWIPER CAROUSEL INITIALIZATION
+// ============================================
+
+function initializeSwiper() {
+    if (typeof Swiper !== 'undefined') {
+        const swiper = new Swiper('.products-swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            loop: false,
+            grabCursor: true,
+            touchEventsTarget: 'container',
+            simulateTouch: true,
+            touchRatio: 1,
+            touchAngle: 45,
+            longSwipes: true,
+            longSwipesRatio: 0.5,
+            slidesPerGroup: 1,
+            freeMode: true,
+            freeModeMomentum: true,
+            freeModeMomentumRatio: 0.5,
+            freeModeMomentumVelocityRatio: 0.5,
+            scrollbar: {
+                el: '.products-swiper-scrollbar',
+                draggable: true,
+                dragSize: 'auto',
+                snapOnRelease: false,
+            },
+            navigation: {
+                nextEl: '.products-swiper-next',
+                prevEl: '.products-swiper-prev',
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 1.1,
+                    spaceBetween: 15,
+                },
+                640: {
+                    slidesPerView: 1.3,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1280: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 20,
+                },
+                1440: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 20,
+                },
+                1600: {
+                    slidesPerView: 2.7,
+                    spaceBetween: 20,
+                }
+            },
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
+            centeredSlides: false,
+            centeredSlidesBounds: false
+        });
+        console.log("Swiper carousel initialized");
+        window.productsSwiper = swiper;
+    } else {
+        console.warn("Swiper library not loaded");
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initializeSwiper, 100);
+    });
+} else {
+    setTimeout(initializeSwiper, 100);
+}
+
+// ============================================
+// 20. EXPORT FUNCTIONS FOR TESTING
 // ============================================
 
 // Make functions available for testing
