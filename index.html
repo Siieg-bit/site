@@ -30,13 +30,24 @@
     function gtag_report_conversion(url) {
       var callback = function () {
         if (typeof(url) != 'undefined') {
-          window.location = url;
+          window.open(url, '_blank');
         }
       };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-17672801172/OxNmCPqpkrMbEJSXhutB',
-          'event_callback': callback
-      });
+      
+      // Check if gtag is available
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17672801172/OxNmCPqpkrMbEJSXhutB',
+            'event_callback': callback
+        });
+      } else {
+        // If gtag is not available, just open the link
+        callback();
+      }
+      
+      // Fallback timeout to ensure link opens even if callback fails
+      setTimeout(callback, 1000);
+      
       return false;
     }
     </script>
