@@ -25,7 +25,10 @@
     <!-- Event snippet for Contato conversion -->
     <script>
     function gtag_report_conversion(url) {
+      var callbackExecuted = false;
       var callback = function () {
+        if (callbackExecuted) return;
+        callbackExecuted = true;
         if (typeof(url) != 'undefined') {
           window.open(url, '_blank');
         }
@@ -37,13 +40,12 @@
             'send_to': 'AW-17672801172/OxNmCPqpkrMbEJSXhutB',
             'event_callback': callback
         });
+        // Fallback timeout reduced to 300ms
+        setTimeout(callback, 300);
       } else {
-        // If gtag is not available, just open the link
+        // If gtag is not available, just open the link immediately
         callback();
       }
-      
-      // Fallback timeout to ensure link opens even if callback fails
-      setTimeout(callback, 1000);
       
       return false;
     }
@@ -269,7 +271,7 @@
                     <div class="footer-section">
                         <h4 class="footer-title">Contato</h4>
                         <p class="footer-text">
-                            <a href="#" class="footer-link">WhatsApp</a><br>
+                            <a href="#" class="footer-link" id="footerWhatsApp">WhatsApp</a><br>
                             <a href="mailto:contato@lojasmesh.com" class="footer-link">Email</a>
                         </p>
                     </div>

@@ -69,18 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
 // ============================================
 
 function setupEventListeners() {
-    // Product selection change event
-    selectElement.addEventListener("change", handleProductChange);
-    
-    // Buy button click event
-    btnComprar.addEventListener("click", handleBuyClick);
-    
-    // Keyboard support
-    selectElement.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            handleBuyClick();
-        }
-    });
+    // Only setup if elements exist (on comprar-creditos page)
+    if (selectElement && btnComprar) {
+        // Product selection change event
+        selectElement.addEventListener("change", handleProductChange);
+        
+        // Buy button click event
+        btnComprar.addEventListener("click", handleBuyClick);
+        
+        // Keyboard support
+        selectElement.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                handleBuyClick();
+            }
+        });
+    }
 }
 
 // ============================================
@@ -329,6 +332,7 @@ function setupNavigationLinks() {
     // Get the Contato navigation links
     const navContato = document.getElementById('navContato');
     const footerContato = document.getElementById('footerContato');
+    const footerWhatsApp = document.getElementById('footerWhatsApp');
     
     // Create WhatsApp link with message
     const whatsappLink = `https://wa.me/${CONFIG.telefone}?text=Ol%C3%A1!+Gostaria+de+saber+mais+sobre+os+cr%C3%A9ditos+Manus+AI`;
@@ -358,6 +362,19 @@ function setupNavigationLinks() {
             console.log('✓ Opened WhatsApp from footer navigation');
         });
     }
+    
+    // Add click event to footer WhatsApp link
+    if (footerWhatsApp) {
+        footerWhatsApp.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion(whatsappLink);
+            } else {
+                window.open(whatsappLink, '_blank');
+            }
+            console.log('✓ Opened WhatsApp from footer WhatsApp link');
+        });
+    }
 }
 
 // ============================================
@@ -366,6 +383,11 @@ function setupNavigationLinks() {
 
 function setupProductCardListeners() {
     const productCards = document.querySelectorAll('.product-item');
+    
+    // Only setup if elements exist (on comprar-creditos page)
+    if (!selectElement || productCards.length === 0) {
+        return;
+    }
     
     productCards.forEach((card, index) => {
         card.style.cursor = 'pointer';

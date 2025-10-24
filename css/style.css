@@ -223,8 +223,9 @@ a:hover {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 400px;
+    max-height: 280px;
     object-fit: cover;
+    object-position: center center;
 }
 
 .hero-content {
@@ -497,11 +498,11 @@ a:hover {
 }
 
 .swiper-button-prev {
-    left: 0 !important;
+    left: 10px !important;
 }
 
 .swiper-button-next {
-    right: 0 !important;
+    right: 10px !important;
 }
 
 .swiper-button-prev:hover,
