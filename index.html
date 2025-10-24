@@ -12,7 +12,6 @@
     gtag('config', 'AW-17672801172');
   </script>
 
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,28 +148,58 @@
                     <h2 class="section-title">Perguntas Frequentes</h2>
                     <div class="faq-grid">
                         <div class="faq-item">
-                            <h4 class="faq-question">Quanto tempo leva para receber os créditos?</h4>
-                            <p class="faq-answer">Os créditos são adicionados à sua conta imediatamente após a confirmação do pagamento via WhatsApp.</p>
+                            <button class="faq-question" type="button">
+                                <span>Quanto tempo leva para receber os créditos?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Os créditos são adicionados à sua conta imediatamente após a confirmação do pagamento via WhatsApp.</p>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <h4 class="faq-question">Os créditos expiram?</h4>
-                            <p class="faq-answer">Não, seus créditos não têm data de expiração. Você pode usá-los quando quiser.</p>
+                            <button class="faq-question" type="button">
+                                <span>Os créditos expiram?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Não, seus créditos não têm data de expiração. Você pode usá-los quando quiser.</p>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <h4 class="faq-question">Posso cancelar minha compra?</h4>
-                            <p class="faq-answer">Sim, reembolsos podem ser feitos antes do envio dos créditos.</p>
+                            <button class="faq-question" type="button">
+                                <span>Posso cancelar minha compra?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim, reembolsos podem ser feitos antes do envio dos créditos.</p>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <h4 class="faq-question">Qual é a forma de pagamento?</h4>
-                            <p class="faq-answer">Aceitamos pagamento via PIX, cripto e cartão de crédito (com juros) através do WhatsApp.</p>
+                            <button class="faq-question" type="button">
+                                <span>Qual é a forma de pagamento?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Aceitamos pagamento via PIX, cripto e cartão de crédito (com juros) através do WhatsApp.</p>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <h4 class="faq-question">Como funciona o bônus?</h4>
-                            <p class="faq-answer">Os créditos bônus são adicionados automaticamente ao seu pacote. Eles têm as mesmas funcionalidades dos créditos regulares.</p>
+                            <button class="faq-question" type="button">
+                                <span>Como funciona o bônus?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Os créditos bônus são adicionados automaticamente ao seu pacote. Eles têm as mesmas funcionalidades dos créditos regulares.</p>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <h4 class="faq-question">Preciso de uma conta para comprar?</h4>
-                            <p class="faq-answer">Não, você pode comprar uma conta já com os créditos.</p>
+                            <button class="faq-question" type="button">
+                                <span>Preciso de uma conta para comprar?</span>
+                                <span class="faq-icon">▼</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Não, você pode comprar uma conta já com os créditos.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -210,5 +239,37 @@
     </div>
 
     <script src="./js/script.js"></script>
+    
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('FAQ: DOM carregado!');
+            
+            const faqItems = document.querySelectorAll('.faq-item');
+            console.log('FAQ: Encontrados ' + faqItems.length + ' itens');
+            
+            faqItems.forEach(function(item, index) {
+                const question = item.querySelector('.faq-question');
+                
+                if (question) {
+                    question.addEventListener('click', function() {
+                        console.log('FAQ: Clicou no item ' + index);
+                        
+                        // Fechar outros
+                        faqItems.forEach(function(otherItem) {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle atual
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+            
+            console.log('FAQ: Inicializado com sucesso!');
+        });
+    </script>
 </body>
 </html>

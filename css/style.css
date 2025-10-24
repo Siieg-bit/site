@@ -606,8 +606,8 @@ a:hover {
 
 .product-badge {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0;
+    right: 0;
     display: inline-block;
     background: rgba(0, 163, 255, 0.75);
     backdrop-filter: blur(8px);
@@ -803,26 +803,65 @@ a:hover {
 }
 
 .faq-item {
-    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-    border: 1px solid #222;
-    border-radius: 12px;
-    padding: 2rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
     transition: all 0.3s ease;
+    margin-bottom: 1rem;
 }
 
 .faq-item:hover {
+    border-color: #3a3a3a;
+}
+
+.faq-item.active {
     border-color: #00A3FF;
-    box-shadow: 0 8px 32px rgba(0, 163, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 163, 255, 0.15);
 }
 
 .faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
     color: #00A3FF;
     font-weight: 700;
-    margin-bottom: 1rem;
     font-size: 1rem;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(0, 163, 255, 0.05);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
 }
 
 .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 2rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 2rem 1.5rem 2rem;
+}
+
+.faq-answer p {
     color: #b0b0b0;
     font-size: 0.95rem;
     margin: 0;

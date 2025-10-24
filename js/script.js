@@ -589,3 +589,38 @@ window.testFunctions = {
 console.log("✓ Script loaded successfully");
 console.log("ℹ For testing, use: window.testFunctions");
 
+
+
+// ============================================
+// FAQ ACCORDION - Versão Simplificada
+// ============================================
+
+// Aguardar carregamento completo do DOM
+window.addEventListener('load', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    console.log('FAQ Accordion: Encontrados ' + faqItems.length + ' itens');
+    
+    faqItems.forEach(function(item, index) {
+        const question = item.querySelector('.faq-question');
+        
+        if (question) {
+            question.addEventListener('click', function() {
+                console.log('FAQ: Clicou no item ' + index);
+                
+                // Fechar todos os outros itens
+                faqItems.forEach(function(otherItem) {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle do item atual
+                item.classList.toggle('active');
+            });
+        }
+    });
+    
+    console.log('✓ FAQ Accordion inicializado com sucesso!');
+});
+
