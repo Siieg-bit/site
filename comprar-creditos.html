@@ -21,6 +21,22 @@
     <link rel="icon" href="./img/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- Event snippet for Contato conversion -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17672801172/OxNmCPqpkrMbEJSXhutB',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
 </head>
 <body>
     <div class="page-wrapper">
@@ -253,6 +269,13 @@
             </div>
         </footer>
     </div>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="#" onclick="return gtag_report_conversion('https://wa.me/5517992506437?text=Ol%C3%A1!+Gostaria+de+saber+mais+sobre+os+cr%C3%A9ditos+Manus+AI');" target="_blank" class="whatsapp-float" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.736 5.488 2.032 7.808L0 32l8.384-2.176A15.938 15.938 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.344c-2.528 0-4.928-.704-6.976-1.92l-.496-.288-5.152 1.344 1.376-5.024-.32-.512A13.248 13.248 0 012.656 16c0-7.36 5.984-13.344 13.344-13.344S29.344 8.64 29.344 16 23.36 29.344 16 29.344zm7.296-9.952c-.4-.2-2.368-1.168-2.736-1.296-.368-.128-.64-.192-.912.192-.272.384-1.056 1.296-1.296 1.568-.24.272-.48.304-.88.112-.4-.192-1.696-.624-3.232-1.984-1.2-1.056-2.016-2.368-2.256-2.768-.24-.4-.024-.616.176-.816.176-.176.4-.464.6-.696.2-.232.272-.4.4-.672.128-.272.064-.496-.032-.696-.096-.2-.912-2.192-1.248-3.008-.336-.8-.672-.688-.912-.704-.24-.016-.496-.016-.752-.016s-.688.096-1.056.496c-.368.4-1.408 1.376-1.408 3.36s1.44 3.904 1.648 4.176c.208.272 2.912 4.448 7.056 6.24.992.432 1.76.688 2.368.88.992.304 1.888.256 2.592.16.8-.112 2.368-.976 2.704-1.92.336-.944.336-1.76.24-1.92-.096-.16-.368-.256-.768-.448z"/>
+        </svg>
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/script.js"></script>

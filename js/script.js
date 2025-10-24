@@ -202,8 +202,13 @@ function openWhatsApp(message) {
         console.log("✓ Opening WhatsApp...");
         console.log("✓ URL: " + whatsappUrl);
         
-        // Open in new tab/window
-        window.open(whatsappUrl, "_blank");
+        // Track conversion and open WhatsApp
+        if (typeof gtag_report_conversion === 'function') {
+            gtag_report_conversion(whatsappUrl);
+        } else {
+            // Fallback if gtag is not available
+            window.open(whatsappUrl, "_blank");
+        }
         
         // Show success notification
         showNotification("Redirecionando para WhatsApp...", "success");
@@ -325,14 +330,18 @@ function setupNavigationLinks() {
     const navContato = document.getElementById('navContato');
     const footerContato = document.getElementById('footerContato');
     
-    // Create WhatsApp link
-    const whatsappLink = `https://wa.me/${CONFIG.telefone}`;
+    // Create WhatsApp link with message
+    const whatsappLink = `https://wa.me/${CONFIG.telefone}?text=Ol%C3%A1!+Gostaria+de+saber+mais+sobre+os+cr%C3%A9ditos+Manus+AI`;
     
     // Add click event to header Contato link
     if (navContato) {
         navContato.addEventListener('click', (e) => {
             e.preventDefault();
-            window.open(whatsappLink, '_blank');
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion(whatsappLink);
+            } else {
+                window.open(whatsappLink, '_blank');
+            }
             console.log('✓ Opened WhatsApp from header navigation');
         });
     }
@@ -341,7 +350,11 @@ function setupNavigationLinks() {
     if (footerContato) {
         footerContato.addEventListener('click', (e) => {
             e.preventDefault();
-            window.open(whatsappLink, '_blank');
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion(whatsappLink);
+            } else {
+                window.open(whatsappLink, '_blank');
+            }
             console.log('✓ Opened WhatsApp from footer navigation');
         });
     }
@@ -622,5 +635,32 @@ window.addEventListener('load', function() {
     });
     
     console.log('✓ FAQ Accordion inicializado com sucesso!');
+});
+
+
+
+// ============================================
+// WHATSAPP FLOATING BUTTON HANDLER
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappFloat = document.getElementById('whatsappFloat');
+    
+    if (whatsappFloat) {
+        whatsappFloat.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create WhatsApp link with API format
+            const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os créditos Manus AI.');
+            const whatsappUrl = `https://api.whatsapp.com/send/?phone=${CONFIG.telefone}&text=${message}`;
+            
+            // Open in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            console.log('✓ WhatsApp flutuante clicado');
+        });
+        
+        console.log('✓ Botão flutuante do WhatsApp inicializado');
+    }
 });
 

@@ -1369,3 +1369,109 @@ a:hover {
     }
 }
 
+
+
+/* ============================================
+   CUSTOM IMPROVEMENTS - Botão Primário e WhatsApp Flutuante
+   ============================================ */
+
+/* Botão Primário - Ver Pacotes de Créditos */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #00A3FF 0%, #0088cc 100%);
+    color: #fff;
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 163, 255, 0.3);
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #00d4ff 0%, #00A3FF 100%);
+    box-shadow: 0 12px 32px rgba(0, 163, 255, 0.5);
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float:active {
+    transform: scale(1.05);
+}
+
+.whatsapp-float svg {
+    width: 38px;
+    height: 38px;
+    fill: #fff;
+}
+
+/* Animação de pulso para o botão do WhatsApp */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+}
+
+.whatsapp-float {
+    animation: pulse 2s infinite;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .btn-primary {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-float svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
